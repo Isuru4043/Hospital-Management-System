@@ -134,7 +134,55 @@ public class User extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+<<<<<<< Updated upstream
     private void textnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textnameActionPerformed
+=======
+    private void txtnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtnameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtnameActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        String name = txtname.getText();
+        String userName = txtusername.getText();
+        String password = txtpassword.getText();
+        String usertype = txtutype.getSelectedItem().toString();
+
+        
+        try {
+
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            con = DriverManager.getConnection("jdbc:mysql://localhost/hospital","root","80589915");
+        } catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(User.class.getName()).log(Level.SEVERE,null,ex);
+        }
+            pst = con.prepareStatement("insert into user(name,username,password,utype)values(?,?,?,?)");
+            
+            pst.setString(1, name);
+            pst.setString(2, userName);
+            pst.setString(3, password);
+            pst.setString(4, usertype);
+            
+            pst.executeUpdate();
+            
+            JOptionPane.showMessageDialog(this, "User inserted");
+            
+            txtname.setText("");
+            txtusername.setText("");
+            txtpassword.setText("");
+            txtutype.setSelectedIndex(-1);
+            txtname.requestFocus();
+        } catch (SQLException ex) {
+            Logger.getLogger(User.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void txtpasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtpasswordActionPerformed
+>>>>>>> Stashed changes
         // TODO add your handling code here:
     }//GEN-LAST:event_textnameActionPerformed
 
